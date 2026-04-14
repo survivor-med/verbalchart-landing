@@ -2,38 +2,36 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
+  <meta name="robots" content="noindex, nofollow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VerbalChart — Coming Soon</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Syne:wght@400;500;700;800&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg:       #0e1a12;
-      --surface:  rgba(245,239,212,0.04);
-      --border:   rgba(245,239,212,0.08);
-      --cream:    #f5efd4;
-      --cream2:   #e8dfc0;
-      --muted:    rgba(245,239,212,0.40);
-      --green:    #2d5a3d;
-      --green-l:  #3d7a52;
-      --accent:   #a8c9a0;
+      --bg:      #0e1a12;
+      --border:  rgba(245,239,212,0.08);
+      --cream:   #f5efd4;
+      --cream2:  #e8dfc0;
+      --muted:   rgba(245,239,212,0.40);
+      --green:   #2d5a3d;
+      --green-l: #3d7a52;
+      --accent:  #a8c9a0;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; background: var(--bg); color: var(--cream); font-family: 'Syne', sans-serif; overflow-x: hidden; }
+    html, body { height: 100%; background: var(--bg); color: var(--cream); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
 
     body::before {
-      content: '';
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
       background:
         radial-gradient(ellipse 70% 55% at 50% -5%,  rgba(61,122,82,0.20) 0%, transparent 65%),
         radial-gradient(ellipse 50% 40% at 85% 90%,  rgba(168,201,160,0.08) 0%, transparent 55%),
         radial-gradient(ellipse 35% 30% at 8% 65%,   rgba(45,90,61,0.12) 0%, transparent 50%);
     }
     body::after {
-      content: '';
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
       background-image:
         linear-gradient(rgba(245,239,212,0.018) 1px, transparent 1px),
         linear-gradient(90deg, rgba(245,239,212,0.018) 1px, transparent 1px);
@@ -41,13 +39,9 @@
     }
 
     .page {
-      position: relative; z-index: 1;
-      min-height: 100vh;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      padding: clamp(24px, 5vw, 56px);
-      max-width: 1080px;
-      margin: 0 auto;
+      position: relative; z-index: 1; min-height: 100vh;
+      display: grid; grid-template-rows: auto 1fr auto;
+      padding: clamp(24px, 5vw, 56px); max-width: 1080px; margin: 0 auto;
     }
 
     nav {
@@ -55,155 +49,70 @@
       padding-bottom: 52px;
       opacity: 0; animation: fadeUp 0.8s ease 0.1s forwards;
     }
-    .logo {
-      display: flex; align-items: center; gap: 11px;
-      font-weight: 800; font-size: 1.2rem; letter-spacing: -0.01em; color: var(--cream);
-    }
+    .logo { display: flex; align-items: center; gap: 10px; }
     .logo-mic {
-      width: 32px; height: 32px;
-      background: var(--green);
-      border-radius: 8px;
+      width: 32px; height: 32px; background: var(--green); border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 20px rgba(61,122,82,0.55);
+      box-shadow: 0 0 20px rgba(61,122,82,0.55); flex-shrink: 0;
     }
-    .logo-mic svg { width: 15px; height: 15px; color: var(--accent); }
-    .badge {
-      font-size: 0.70rem; font-weight: 500; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--accent);
-      border: 1px solid rgba(168,201,160,0.30);
-      padding: 5px 14px; border-radius: 100px;
-      background: rgba(168,201,160,0.06);
-    }
+    .logo-mic svg { width: 15px; height: 15px; }
+    .logo-text { font-family: 'DM Sans', sans-serif; font-size: 1.15rem; font-weight: 600; letter-spacing: 0.01em; color: var(--cream); }
+    .badge { font-size: 0.70rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(168,201,160,0.30); padding: 5px 14px; border-radius: 100px; background: rgba(168,201,160,0.06); }
 
-    .hero {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 24px 0 32px;
-    }
+    .hero { display: flex; flex-direction: column; justify-content: center; padding: 24px 0 32px; }
 
-    .eyebrow {
-      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 28px;
-      opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards;
-    }
+    .eyebrow { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards; }
 
-    .headline {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 8vw, 6.4rem);
-      line-height: 1.03; letter-spacing: -0.01em;
-      color: var(--cream); margin-bottom: 10px;
-      opacity: 0; animation: fadeUp 0.9s ease 0.45s forwards;
-    }
+    .headline { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 6.4rem); line-height: 1.03; color: var(--cream); margin-bottom: 10px; opacity: 0; animation: fadeUp 0.9s ease 0.45s forwards; }
     .headline em { font-style: italic; color: var(--accent); }
 
-    .headline-en {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.5rem, 3.2vw, 2.6rem);
-      font-style: italic; font-weight: 400;
-      color: rgba(245,239,212,0.28);
-      margin-bottom: 36px;
-      opacity: 0; animation: fadeUp 0.9s ease 0.55s forwards;
-    }
+    .headline-en { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem, 3.2vw, 2.6rem); font-style: italic; color: rgba(245,239,212,0.28); margin-bottom: 36px; opacity: 0; animation: fadeUp 0.9s ease 0.55s forwards; }
 
-    .divider {
-      width: 52px; height: 1px;
-      background: linear-gradient(90deg, var(--green-l), transparent);
-      margin-bottom: 28px;
-      opacity: 0; animation: fadeUp 0.8s ease 0.65s forwards;
-    }
+    .divider { width: 52px; height: 1px; background: linear-gradient(90deg, var(--green-l), transparent); margin-bottom: 28px; opacity: 0; animation: fadeUp 0.8s ease 0.65s forwards; }
 
-    .sub-kr {
-      font-family: 'Noto Sans KR', sans-serif;
-      font-weight: 300; font-size: clamp(1rem, 1.8vw, 1.2rem);
-      color: var(--muted); margin-bottom: 48px;
-      opacity: 0; animation: fadeUp 0.9s ease 0.7s forwards;
-    }
+    .sub-kr { font-family: 'Noto Sans KR', sans-serif; font-weight: 300; font-size: clamp(1rem, 1.8vw, 1.2rem); color: var(--muted); margin-bottom: 48px; opacity: 0; animation: fadeUp 0.9s ease 0.7s forwards; }
 
-    .wave-wrap {
-      display: flex; align-items: center; gap: 3px;
-      height: 48px; margin-bottom: 44px;
-      opacity: 0; animation: fadeUp 0.9s ease 0.8s forwards;
-    }
-    .bar {
-      width: 3px; border-radius: 2px; background: var(--green-l);
-      animation: wavebar 1.6s ease-in-out infinite;
-      transform-origin: center;
-    }
+    .wave-wrap { display: flex; align-items: center; gap: 3px; height: 48px; margin-bottom: 44px; opacity: 0; animation: fadeUp 0.9s ease 0.8s forwards; }
+    .bar { width: 3px; border-radius: 2px; background: var(--green-l); animation: wavebar 1.6s ease-in-out infinite; transform-origin: center; }
     .bar.hi { background: var(--accent); opacity: 0.55; }
 
-    .notify-form {
-      display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px;
-      opacity: 0; animation: fadeUp 0.9s ease 0.95s forwards;
-    }
-    .notify-form input[type="email"] {
+    /* ── Email form ── */
+    .notify-wrap { opacity: 0; animation: fadeUp 0.9s ease 0.9s forwards; }
+    .notify-form { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+    .notify-form input {
       flex: 1 1 260px;
-      background: rgba(245,239,212,0.04);
-      border: 1px solid rgba(245,239,212,0.12);
+      background: rgba(245,239,212,0.04); border: 1px solid rgba(245,239,212,0.12);
       border-radius: 10px; padding: 14px 18px;
-      font-family: 'Syne', sans-serif; font-size: 0.88rem; color: var(--cream);
+      font-family: 'DM Sans', sans-serif; font-size: 0.88rem; color: var(--cream);
       outline: none; transition: border-color 0.2s, box-shadow 0.2s;
     }
     .notify-form input::placeholder { color: var(--muted); }
-    .notify-form input:focus {
-      border-color: rgba(168,201,160,0.45);
-      box-shadow: 0 0 0 3px rgba(168,201,160,0.08);
-    }
+    .notify-form input:focus { border-color: rgba(168,201,160,0.45); box-shadow: 0 0 0 3px rgba(168,201,160,0.08); }
     .btn-notify {
-      flex-shrink: 0;
-      background: var(--cream2); color: #0e1a12;
+      flex-shrink: 0; background: var(--cream2); color: #0e1a12;
       border: none; border-radius: 10px; padding: 14px 30px;
-      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.88rem;
-      letter-spacing: 0.05em; cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
+      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.88rem;
+      letter-spacing: 0.03em; cursor: pointer; transition: background 0.2s, transform 0.15s;
+      min-width: 110px;
     }
     .btn-notify:hover { background: var(--cream); transform: translateY(-1px); }
+    .btn-notify:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
-    .form-hint {
-      font-size: 0.74rem; color: var(--muted);
-      font-family: 'Noto Sans KR', sans-serif; font-weight: 300;
-      opacity: 0; animation: fadeUp 0.8s ease 1.1s forwards;
-    }
-    .success-msg {
-      display: none;
-      font-family: 'Noto Sans KR', sans-serif; font-size: 0.88rem; color: var(--accent);
-      margin-top: 8px;
-    }
+    .form-msg { font-size: 0.78rem; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; min-height: 20px; }
+    .form-msg.success { color: var(--accent); }
+    .form-msg.error   { color: #f87171; }
+    .form-msg.hint    { color: var(--muted); }
 
-    .features {
-      display: flex; flex-wrap: wrap; gap: 12px; margin-top: 52px;
-      opacity: 0; animation: fadeUp 0.9s ease 1.15s forwards;
-    }
-    .feat {
-      display: flex; align-items: center; gap: 9px;
-      background: rgba(245,239,212,0.03);
-      border: 1px solid rgba(245,239,212,0.07);
-      border-radius: 10px; padding: 10px 16px;
-      font-size: 0.80rem; color: var(--muted);
-      font-family: 'Noto Sans KR', sans-serif; white-space: nowrap;
-      transition: border-color 0.2s, background 0.2s, color 0.2s;
-    }
-    .feat:hover {
-      border-color: rgba(168,201,160,0.22);
-      background: rgba(168,201,160,0.05);
-      color: rgba(245,239,212,0.72);
-    }
+    .features { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 48px; opacity: 0; animation: fadeUp 0.9s ease 1.0s forwards; }
+    .feat { display: flex; align-items: center; gap: 9px; background: rgba(245,239,212,0.03); border: 1px solid rgba(245,239,212,0.07); border-radius: 10px; padding: 10px 16px; font-size: 0.80rem; color: var(--muted); font-family: 'Noto Sans KR', sans-serif; white-space: nowrap; transition: border-color 0.2s, background 0.2s, color 0.2s; }
+    .feat:hover { border-color: rgba(168,201,160,0.22); background: rgba(168,201,160,0.05); color: rgba(245,239,212,0.72); }
     .feat svg { width: 15px; height: 15px; color: var(--accent); flex-shrink: 0; }
 
-    footer {
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 10px; padding-top: 40px;
-      border-top: 1px solid var(--border);
-      opacity: 0; animation: fadeUp 0.8s ease 1.3s forwards;
-    }
+    footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-top: 40px; border-top: 1px solid var(--border); opacity: 0; animation: fadeUp 0.8s ease 1.1s forwards; }
     footer span { font-size: 0.72rem; color: var(--muted); font-family: 'Noto Sans KR', sans-serif; font-weight: 300; }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes wavebar {
-      0%, 100% { transform: scaleY(0.12); }
-      50%       { transform: scaleY(1); }
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes wavebar { 0%, 100% { transform: scaleY(0.12); } 50% { transform: scaleY(1); } }
   </style>
 </head>
 <body>
@@ -212,20 +121,19 @@
   <nav>
     <div class="logo">
       <div class="logo-mic">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#a8c9a0" stroke-width="2.2" stroke-linecap="round">
           <path d="M12 2a3 3 0 0 1 3 3v7a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/>
           <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
           <line x1="12" y1="19" x2="12" y2="22"/>
         </svg>
       </div>
-      VerbalChart
+      <span class="logo-text">VerbalChart</span>
     </div>
     <div class="badge">Coming Soon</div>
   </nav>
 
   <main class="hero">
     <p class="eyebrow">AI Clinical Documentation · 의료 AI 차트</p>
-
     <h1 class="headline">
       목소리로 완성되는<br />
       <em>스마트한</em> 의료 차트
@@ -236,12 +144,13 @@
 
     <div class="wave-wrap" id="wave"></div>
 
-    <div class="notify-form" id="notifyForm">
-      <input type="email" id="emailInput" placeholder="이메일을 남겨주세요 — 출시 알림을 보내드립니다" />
-      <button class="btn-notify" onclick="submitEmail()">알림 받기</button>
+    <div class="notify-wrap">
+      <div class="notify-form">
+        <input type="email" id="emailInput" placeholder="이메일을 남겨주세요 — 출시 알림을 보내드립니다" />
+        <button class="btn-notify" id="submitBtn" onclick="submitEmail()">알림 받기</button>
+      </div>
+      <p class="form-msg hint" id="formMsg">베타 출시 시 가장 먼저 소식을 전해드릴게요 ✦</p>
     </div>
-    <p class="form-hint">출시 시 가장 먼저 소식을 전해드릴게요 ✦</p>
-    <p class="success-msg" id="successMsg">✓ 등록되었습니다. 출시 소식을 기다려주세요!</p>
 
     <div class="features">
       <div class="feat">
@@ -280,26 +189,71 @@
 </div>
 
 <script>
+  /* ── Waveform ── */
   const wave = document.getElementById('wave');
   for (let i = 0; i < 44; i++) {
     const b = document.createElement('div');
     b.className = 'bar' + (i % 3 === 0 ? ' hi' : '');
     b.style.height = (Math.random() * 34 + 8) + 'px';
-    b.style.animationDelay  = (i * 0.038) + 's';
+    b.style.animationDelay = (i * 0.038) + 's';
     b.style.animationDuration = (1.1 + Math.random() * 0.9) + 's';
     wave.appendChild(b);
   }
 
-  function submitEmail() {
+  /* ── Supabase waitlist ── */
+  const SUPABASE_URL = 'https://glbuvmbveduoxdufaykw.supabase.co';
+  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdsYnV2bWJ2ZWR1b3hkdWZheWt3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI1MjEwNzAsImV4cCI6MjA4ODA5NzA3MH0.xCJhVGFw-XVg1CKfD6XInOP2UkzhEPNl1PZZsKvBvKo';
+
+  async function submitEmail() {
     const input = document.getElementById('emailInput');
-    if (!input.value.trim().includes('@')) {
-      input.style.borderColor = 'rgba(255,100,100,0.5)';
-      setTimeout(() => input.style.borderColor = '', 1200);
+    const btn   = document.getElementById('submitBtn');
+    const msg   = document.getElementById('formMsg');
+    const email = input.value.trim();
+
+    if (!email || !email.includes('@')) {
+      input.style.borderColor = 'rgba(248,113,113,0.5)';
+      setTimeout(() => input.style.borderColor = '', 1500);
       return;
     }
-    document.getElementById('notifyForm').style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
+
+    btn.disabled = true;
+    btn.textContent = '등록 중...';
+    msg.className = 'form-msg hint';
+    msg.textContent = '';
+
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_ANON,
+          'Authorization': `Bearer ${SUPABASE_ANON}`,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({ email })
+      });
+
+      if (res.status === 201) {
+        input.style.display = 'none';
+        btn.style.display = 'none';
+        msg.className = 'form-msg success';
+        msg.textContent = '✓ 등록되었습니다. 베타 출시 시 소식을 전해드릴게요!';
+      } else if (res.status === 409) {
+        msg.className = 'form-msg error';
+        msg.textContent = '이미 등록된 이메일이에요.';
+        btn.disabled = false;
+        btn.textContent = '알림 받기';
+      } else {
+        throw new Error('server error');
+      }
+    } catch {
+      msg.className = 'form-msg error';
+      msg.textContent = '오류가 발생했어요. 잠시 후 다시 시도해주세요.';
+      btn.disabled = false;
+      btn.textContent = '알림 받기';
+    }
   }
+
   document.getElementById('emailInput').addEventListener('keydown', e => {
     if (e.key === 'Enter') submitEmail();
   });
